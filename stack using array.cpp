@@ -1,21 +1,21 @@
 #include<stdio.h>
-#include<conio.h>
 #include<stdlib.h>
 void showarray();
 void push();
 void pop();
+void peek();
 int a[100];
 int x,c;
-main()
+void main()
 {
-	int choice;
+	int v,choice;
 	c=-1;
 	printf("Enter the size of the array: ");
 	scanf("%d",&x);
 	do
 	{
 		choice=0;
-		printf("Do you want to-\n1.Push\n2.Pop\n3.Display the stack\n4.Exit\nYour choice: ");
+		printf("Do you want to-\n1.Push\n2.Pop\n3.Display the stack\n4.Peek\n5.Exit\nYour choice: ");
 		scanf("%d",&choice);
 		switch(choice)
 		{
@@ -29,12 +29,15 @@ main()
 				showarray();
 				break;
 			case 4:
+			    peek();
+			    break;
+			case 5:
 				printf("Ending Process....!!");
 				break;
 			default:
 				printf("Invalid choice\n");
 		}
-	}while(choice!=4);
+	}while(choice!=5);
 }
 void push()
 {
@@ -71,4 +74,13 @@ void showarray()
 			printf("%d\n",a[i]);
 		}
 	}
+}
+void peek()
+{
+    if(c==-1)
+    printf("The stack is empty\n");
+    else
+    {
+        printf("The top element is %d\n",a[c]);
+    }
 }
