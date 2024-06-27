@@ -1,13 +1,14 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
-int create();
-int showarray();
-int store();
-int retrieve();
+void create();
+void showarray();
+void store();
+void retrieve();
+void peek();
 int x,c,*p,f;
 int a[1000];
-int main()
+main()
 {
 	int choice;
 	c=-2;
@@ -15,7 +16,7 @@ int main()
 	f=x;
 	do
 	{
-		printf("\nDo you want to-\n1.Store\n2.Retrieve\n3.Display the Queue\n4.Exit\n");
+		printf("Do you want to-\n1.Store\n2.Retrieve\n3.Display the Queue\n4.Peek\n5.Exit\nYour choice: ");
 		scanf("%d",&choice);
 		switch(choice)
 		{
@@ -29,26 +30,28 @@ int main()
 				showarray();
 				break;
 			case 4:
+				peek();
+				break;
+			case 5:
 				printf("Process have been terminated.......\n");
 				break;
 			default:
 				printf("Invalid choice\n");	
 		}
-	}while(choice!=4);
+	}while(choice!=5);
 }
-int create()
+void create()
 {
-	printf("Enter the size of the array\n");
+	printf("Enter the size of the array: ");
 	scanf("%d",&x);
 	if(x<=0 || x>1000)
 	{
 		printf("Queue was not created. Please try again\n");
 		create();
 	}
-	f=x;
-	return 0;	
+	f=x;	
 }
-int showarray()
+void showarray()
 {
 	int i;
 	if(c==-2)
@@ -59,10 +62,10 @@ int showarray()
 		{
 			printf("==>%d",a[i]);
 		}
+		printf("\n");
 	}
-	return 0;
 }
-int store()
+void store()
 {
 	int v;
 	if(f==0)
@@ -70,14 +73,12 @@ int store()
 	else
 	{
 		f--;
-		printf("Enter the value to be stored\n");
-		scanf("%d",&v);
-		a[f]=v;
+		printf("Enter the value to be stored: ");
+		scanf("%d",&a[f]);
 		c++;
 	}
-	return 0;
 }
-int retrieve()
+void retrieve()
 {
 	int i;
 	if(c==-2)
@@ -96,5 +97,11 @@ int retrieve()
 		}
 		c--;
 	}
-	return 0;
+}
+void peek()
+{
+	if(c==-2)
+		printf("The Queue is empty\n");
+	else
+		printf("The front element is %d\n",a[x-1]);
 }
