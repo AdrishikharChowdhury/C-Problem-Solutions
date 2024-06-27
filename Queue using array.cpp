@@ -67,7 +67,6 @@ void showarray()
 }
 void store()
 {
-	int v;
 	if(f==0)
 		printf("Queue is overflowing\n");
 	else
