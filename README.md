@@ -72,8 +72,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 # Contact
 
-Your Name - AdrishikharChowdhury
-Project Link: https://github.com/AdrishikharChowdhury/c-problem-solutions
+- Your Name - Adrishikhar Chowdhury
+- Project Link: https://github.com/AdrishikharChowdhury/c-files
+- Gmail: amiadrishikhar@gmail.com
 
 # Disclaimer
 
