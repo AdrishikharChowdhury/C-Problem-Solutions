@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct Dnode
+{
+    int data;
+    struct Dnode *prev;
+    struct Dnode *next;
+}dnd;
+dnd* createlist(dnd *,int);
+void display(dnd *);
+int main()
+{
+    dnd *head,*node,*temp=NULL,*current;
+    int n;
+    printf("Enter the no. of nodes for the doubly linked list: ");
+    scanf("%d",&n);
+    head=(dnd *)malloc(sizeof(dnd));
+    head->next=NULL;
+    head->prev=NULL;
+    head=createlist(head,n);
+    printf("Before Reversal:\n");
+    display(head);
+    current=head;
+    while (current != NULL) {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
+    }
+    if (temp != NULL) {
+        head = temp->prev;
+    }
+    printf("After Reversal:\n");
+    display(head);
+    return 0;
+}
+dnd* createlist(dnd *head,int c)
+{
+    dnd *node,*head1;
+    head1=head;
+    int n=1;
+    printf("Enter the first data: ");
+    scanf("%d",&head->data);
+    while(n<c)
+    {
+        node=(dnd *)malloc(sizeof(dnd));
+        printf("Enter the next data: ");
+        scanf("%d",&node->data);
+        node->next=NULL;
+        head1->next=node;
+        node->prev=head1;
+        head1=head1->next;
+        n++;
+    }
+    return head;
+}
+void display(dnd *head)
+{
+    dnd *head1=head;
+    if (head == NULL) {
+        printf("The list is empty.\n");
+        return;
+    }
+    printf("The elements in the Doubly Linked List are:\n");
+    printf("NULL <- ");
+    while(head1!=NULL)
+    {
+        printf("%d",head1->data);
+        head1=head1->next;
+        if (head1 != NULL) {
+            printf(" = ");
+        }
+    }
+    printf(" -> NULL\n");
+}
